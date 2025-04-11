@@ -5,6 +5,20 @@ ro.oplus.image.my_engineering.type=release
 ro.vendor.qti.va_odm.support=1
 sys.oplus_ftm_mode=997
 
+# Camera
+oplus.camera.packname=com.oplus.camera
+oplus.camera.activityname=com.oplus.camera
+ro.oplus.system.camera.name=com.oplus.camera
+
+# Bluetooth
+persist.vendor.bluetooth.modem_nv_support=true
+
+# Display
+vendor.display.disable_noise_layer=1
+vendor.display.disable_spec_fence=1
+vendor.display.force_tonemapping=1
+vendor.display.smomo_game_support=0
+
 # Radio
 persist.vendor.radio.virtualcomm=1
 ro.sys.reserve.integrate=true
