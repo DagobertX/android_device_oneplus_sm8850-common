@@ -21,6 +21,12 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "charger_fstab.qcom",
+    src: "charger_fstab.qcom",
+    vendor: true,
+}
+
+prebuilt_etc {
    name: "init.qti.kernel.rc",
    src: "init.qti.kernel.rc",
    sub_dir: "init/hw",

@@ -215,6 +215,7 @@ endif
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk \
+    charger_fstab.qcom \
     init.class_main.sh \
     init.kernel.post_boot-cliffs_default_3_4_1.sh \
     init.kernel.post_boot-pineapple.sh \
