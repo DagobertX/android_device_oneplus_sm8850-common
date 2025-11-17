@@ -207,6 +207,8 @@ endif
 
 # IR
 ifneq ($(TARGET_IS_TABLET),true)
+$(call inherit-product, vendor/oneplus/ir/config.mk)
+
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.oplus
 
