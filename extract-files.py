@@ -38,16 +38,9 @@ lib_fixups: lib_fixups_user_type = {
     (
         'com.qualcomm.qti.dpm.api@1.0',
         'libosensenativeproxy_client',
-        'vendor.qti.ImsRtpService-V1-ndk',
-        'vendor.qti.diaghal@1.0',
+        'vendor.qti.ImsRtpService-V2-ndk',
         'vendor.qti.hardware.dpmaidlservice-V1-ndk',
-        'vendor.qti.hardware.dpmservice@1.0',
-        'vendor.qti.hardware.qccsyshal@1.0',
-        'vendor.qti.hardware.qccsyshal@1.1',
-        'vendor.qti.hardware.qccsyshal@1.2',
-        'vendor.qti.hardware.wifidisplaysession@1.0',
-        'vendor.qti.imsrtpservice@3.0',
-        'vendor.qti.imsrtpservice@3.1',
+        'vendor.qti.hardware.wifidisplaysession_aidl-V1-ndk',
         'vendor.qti.qccvndhal_aidl-V1-ndk',
     ): lib_fixup_vendor_suffix,
 }
@@ -57,44 +50,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libshims_aidl_fingerprint_v3.oplus.so'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
-    'vendor/bin/init.kernel.post_boot-memory.sh': blob_fixup()
-        .regex_replace('# echo always', 'echo always'),
-    'vendor/bin/system_dlkm_modprobe.sh': blob_fixup()
-        .regex_replace(r'.*\bzram or zsmalloc\b.*\n', '')
-        .regex_replace(r'-e "zram" -e "zsmalloc"', ''),
-    'vendor/bin/vendor_modprobe.sh': blob_fixup()
-        .regex_replace(r'\n.*OPLUS_BUG_STABILITY[\s\S]*?OPLUS_BUG_STABILITY.*\n', ''),
-    (
-        'vendor/bin/qcc-vendor',
-        'vendor/bin/qms',
-        'vendor/bin/xtra-daemon',
-        'vendor/lib64/libcne.so',
-        'vendor/lib64/libqcc_sdk.so',
-        'vendor/lib64/libqms_client.so'
-    ): blob_fixup()
-        .add_needed('libbinder_shim.so'),
-    ('vendor/etc/media_codecs_cliffs_v0.xml', 'vendor/etc/media_codecs_cliffs_v1.xml', 'vendor/etc/media_codecs_pineapple.xml'): blob_fixup()
-        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
-    'vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy': blob_fixup()
-        .add_line_if_missing('sched_get_priority_min: 1')
-        .add_line_if_missing('sched_get_priority_max: 1'),
-    'vendor/etc/init/vendor.dpmd.rc': blob_fixup()
-        .regex_replace(
-            r'(service\s+vendor\.dpmd\s+/vendor/bin/vendor\.dpmd\s*\n)',
-            r'\1    user root\n'
-        ),
-    'vendor/etc/init/nicmd.rc': blob_fixup()
-        .regex_replace(
-            r'(service\s+vendor\.nicmd\s+/system/vendor/bin/nicmd\s*\n\s*class\s+main)',
-            r'\1\n    user root\n    group root'
-        ),
-    'vendor/etc/pwr/PowerFeatureConfig.xml': blob_fixup()
-        .regex_replace(r'(<Name>GamePowerOptFeature</Name>\s*<Enable>)0(<\/Enable>)', r'\g<1>1\g<2>'),
-    'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
-        .add_needed('libbinder_shim.so')
-        .add_needed('libhidlbase_shim.so'),
-    'vendor/lib64/libqcodec2_core.so': blob_fixup()
-        .add_needed('libcodec2_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
