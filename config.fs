@@ -294,9 +294,3 @@ mode: 0771
 user: AID_ROOT
 group: AID_SYSTEM
 caps: 0
-
-[dcp_firmware/]
-mode: 0771
-user: AID_ROOT
-group: AID_SYSTEM
-caps: 0
