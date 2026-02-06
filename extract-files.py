@@ -18,6 +18,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
+    'vendor/oneplus/infiniti', #"FIXME: libqti-perfd" depends on undefined module "libdisplayconfig.qti".
     'device/oneplus/sm8850-common',
     'hardware/qcom-caf/sm8850',
     'hardware/qcom-caf/wlan',
@@ -38,9 +39,12 @@ lib_fixups: lib_fixups_user_type = {
     (
         'com.qualcomm.qti.dpm.api@1.0',
         'libosensenativeproxy_client',
+        'vendor.oplus.hardware.subsys-V5-ndk',
+        'vendor.qti.diaghal-V1-ndk',
         'vendor.qti.ImsRtpService-V2-ndk',
         'vendor.qti.hardware.dpmaidlservice-V1-ndk',
         'vendor.qti.hardware.wifidisplaysession_aidl-V1-ndk',
+        'vendor.qti.qccsyshal_aidl-V1-ndk',
         'vendor.qti.qccvndhal_aidl-V1-ndk',
     ): lib_fixup_vendor_suffix,
 }
@@ -48,8 +52,29 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups: blob_fixups_user_type = {
     'odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service_uff': blob_fixup()
         .add_needed('libshims_aidl_fingerprint_v3.oplus.so'),
+    'odm/etc/init/init.network.rc': blob_fixup()
+        .regex_replace(r'/\* (Huo\.Chen@SYSTEM\.RF, 2024/09/06, Add for ICC) \*/', r'# \1'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
+    (
+        'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
+        'vendor/lib64/hw/libaudiocorehal.qti.so',
+        'vendor/lib64/hw/libaudioeffecthal.qti.so',
+        'vendor/lib64/libaudioserviceexampleimpl.so',
+        'vendor/lib64/libqtigefar.so',
+        'vendor/lib64/soundfx/libqcompostprocbundle.so',
+        'vendor/lib64/soundfx/libqcomvisualizer.so',
+        'vendor/lib64/soundfx/libqcomvoiceprocessing.so',
+        'vendor/lib64/soundfx/libvolumelistener.so',
+    ): blob_fixup()
+        .replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),
+    'vendor/lib64/hw/libaudiocorehal.qti.so': blob_fixup()
+        .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V4-ndk.so'),
+        .replace_needed('android.hardware.audio.core.sounddose-V1-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so'),
+    'vendor/lib64/hw/libsoundtriggerhal.qti.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V2-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),
+    'vendor/lib64/libqcodec2_core.so': blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

@@ -62,7 +62,6 @@ vendor/lib64/libshsc.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
-vendor/lib64/libxml2.so
 vendor/lib64/vendor.libmwqemiptablemgr.so
 vendor/lib64/vendor.qti.data.factoryservice-V2-ndk.so
 vendor/lib64/vendor.qti.data.mwqemaidlservice-V1-ndk.so
@@ -229,7 +228,6 @@ vendor/lib64/liblocdiagiface.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/liblowi_common.so
 vendor/lib64/liblowi_wifihal.so
-vendor/lib64/libpal_net_if.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libsynergy_loc_api.so
 vendor/lib64/libsys_info_cache.so
@@ -422,8 +420,6 @@ vendor/lib64/libCsecClient.so
 vendor/lib64/libQtiRilLoadable.so
 vendor/lib64/libQtiSocket.so
 vendor/lib64/liblqe.so
-vendor/lib64/libprotobuf-cpp-full-21.12.so
-vendor/lib64/libprotobuf-cpp-lite-21.12.so
 vendor/lib64/libqcrilDataModule.so
 vendor/lib64/libqcrilNr.so
 vendor/lib64/libqcrilNrCellInfoModule.so
@@ -482,7 +478,7 @@ vendor/lib64/qtiril-utils.so
 vendor/lib64/qtiwakelock.so
 vendor/lib64/vendor.oplus.hardware.appradioaidl-V1-ndk.so
 vendor/lib64/vendor.oplus.hardware.communicationcenter-V2-ndk.so;MODULE_SUFFIX=_vendor
-vendor/lib64/vendor.oplus.hardware.subsys-V5-ndk.so
+vendor/lib64/vendor.oplus.hardware.subsys-V5-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.oplus.hardware.subsys_imsrtp-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.data.connectionaidl-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.data.connectionfactory-V1-ndk.so
@@ -492,6 +488,7 @@ vendor/lib64/vendor.qti.hardware.radio.am-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.atfwd-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.common-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.ims-V16-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.internal.deviceinfo-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.lpa-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.qcrilhook-V1-ndk.so

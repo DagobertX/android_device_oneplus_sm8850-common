@@ -33,7 +33,20 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libalsautilsv2.vendor \
-    libmediautils_vendor.vendor
+    libbatterylistener \
+    libmediautils_vendor.vendor \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libtinycompress \
+    libtinyalsav2 \
+    libvolumelistener \
+    libbundleaidl \
+    libdownmixaidl \
+    libdynamicsprocessingaidl \
+    libloudnessenhanceraidl \
+    libreverbaidl \
+    libvisualizeraidl
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm8850/audio/primary-hal
 CONFIG_HAL_SRC_DIR := $(AUDIO_HAL_DIR)/configs/canoe
