@@ -69,7 +69,7 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),
     'vendor/lib64/hw/libaudiocorehal.qti.so': blob_fixup()
-        .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V4-ndk.so'),
+        .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V4-ndk.so')
         .replace_needed('android.hardware.audio.core.sounddose-V1-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so'),
     'vendor/lib64/hw/libsoundtriggerhal.qti.so': blob_fixup()
         .replace_needed('android.media.audio.common.types-V2-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),

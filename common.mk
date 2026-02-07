@@ -287,7 +287,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
 
 PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/power/config/pineapple/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+    vendor/qcom/opensource/power/config/canoe/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 $(call soong_config_set,qtipower,mode_ext_lib,power-ext-oplus)
 
@@ -445,13 +445,10 @@ endif
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/oplus/vintf/device_framework_matrix.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_aidl.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE += device/oneplus/sm8850-common/vintf/framework_manifest.xml
-DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
+DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix_aidl.xml
 DEVICE_MANIFEST_FILE := \
-    $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa.xml \
-    $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa_extn.xml \
-    $(LOCAL_PATH)/vintf/manifest_pineapple.xml
+    $(AUDIO_HAL_DIR)/configs/canoe/manifest_audio_qti_services.xml
 
 ifneq ($(TARGET_IS_TABLET),true)
 DEVICE_MANIFEST_FILE += \
@@ -477,10 +474,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.rtt.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.rtt.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
-
-# WiFi firmware symlinks
-PRODUCT_PACKAGES += \
-    firmware_wlanmdsp.otaupdate_symlink
 
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/oneplus/sm8850-common/sm8850-common-vendor.mk)

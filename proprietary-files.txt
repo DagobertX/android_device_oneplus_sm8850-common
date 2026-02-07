@@ -77,8 +77,6 @@ vendor/etc/models/mma/nvd_enpu_off.bin
 vendor/etc/models/mma/nvd_enpu_on.bin
 vendor/etc/models/mma/vad_enpu_off.bin
 vendor/etc/models/mma/vad_enpu_on.bin
-vendor/etc/vintf/manifest/Manifest_IAGM.xml
-vendor/etc/vintf/manifest/Manifest_IPAL.xml
 vendor/etc/vintf/manifest/audioeffectservice_qti.xml
 vendor/etc/vintf/manifest/manifest_audiocorehal_default.xml
 vendor/etc/vintf/manifest/soundtrigger.qti.xml
