@@ -81,6 +81,7 @@ BOARD_BOOTCONFIG := \
     androidboot.hypervisor.version=gunyah \
     androidboot.load_modules_parallel=true \
     androidboot.memcg=1 \
+    androidboot.selinux=permissive \
     androidboot.vendor.qspa=true \
     androidboot.usbcontroller=a600000.dwc3
 
@@ -209,8 +210,8 @@ BOOT_SECURITY_PATCH := 2026-01-01
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 
 # SEPolicy
-include device/qcom/sepolicy_vndr/SEPolicy.mk
-include hardware/oplus/sepolicy/qti/SEPolicy.mk
+#include device/qcom/sepolicy_vndr/SEPolicy.mk
+#include hardware/oplus/sepolicy/qti/SEPolicy.mk
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
