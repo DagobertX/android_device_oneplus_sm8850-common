@@ -96,15 +96,21 @@ vendor/etc/data/tlpd_oem_config.xml
 vendor/etc/init/dataadpl.rc
 vendor/etc/init/dataqti.rc
 vendor/etc/init/init.embmssl_server.rc
+vendor/etc/init/ipacm.rc
 vendor/etc/init/nicmd.rc
 vendor/etc/init/port-bridge.rc
 vendor/etc/init/shsusrd.rc
 vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/etc/vintf/manifest/vendor.qti.hardware.embmssl.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.tetheroffload.service.xml
+vendor/etc/IPACM_cfg.xml
 vendor/lib64/libconfigdb.so
 vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libembmsservice.so
+vendor/lib64/libipanat.so
+vendor/lib64/libnetfilter_conntrack.so
+vendor/lib64/libnfnetlink.so
 vendor/lib64/libnicm.so
 vendor/lib64/libnicm_dsi.so
 vendor/lib64/libnicm_interface.so
@@ -114,6 +120,7 @@ vendor/lib64/libnicm_netlink.so
 vendor/lib64/libnicm_recovery.so
 vendor/lib64/libnicm_utils.so
 vendor/lib64/libnicm_vh.so
+vendor/lib64/liboffloadhal.so
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
@@ -182,6 +189,7 @@ vendor/bin/xtra-daemon
 vendor/bin/xtwifi-client
 vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
 vendor/etc/init/loc-launcher.rc
+odm/etc/init/lowi-server.rc
 vendor/etc/init/lowi-server.rc
 vendor/etc/init/xtra-daemon.rc
 vendor/etc/qspa/nav_disabled.rc
@@ -332,6 +340,7 @@ odm/etc/oem_asm2_tunner_platform_license.pfm
 odm/etc/oem_asm2_tunner_platform_trail_license.pfm
 odm/etc/oem_q_tunner_platform_license.pfm
 odm/etc/oem_q_tunner_platform_trail_license.pfm
+odm/etc/oem_stx_platform_license.pfm
 odm/etc/plugin_config.xml
 odm/lib64/lib-virtual-modem-protos.so
 odm/lib64/libcommcenterfw.so
@@ -339,8 +348,10 @@ odm/lib64/libcommcenterutils.so
 odm/lib64/libdmtp-protos-lite.so
 odm/lib64/libdmtp.so
 odm/lib64/libdmtpclient.so
+odm/lib64/libimsortcapis.so
 odm/lib64/libmindroid-app.so
 odm/lib64/libmindroid-framework.so
+odm/lib64/libortc_so.so
 odm/lib64/libqti-radio-service.so
 odm/lib64/libqti-subsys-service.so
 odm/lib64/libradio-service.so
@@ -522,6 +533,7 @@ vendor/etc/init/vendor.qti.rmt_storage.rc
 # Secure element
 odm/bin/hw/android.hardware.secure_element-service.qti
 odm/etc/init/android.hardware.secure_element-service.qti.rc
+odm/etc/vintf/manifest/secure_element-service.xml
 odm/etc/vintf/manifest/secure_element_omapi_service.xml
 odm/lib64/libsecurity_event_olc_vnd.so
 vendor/etc/vintf/manifest/android.hardware.secure_element.xml
