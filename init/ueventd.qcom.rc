@@ -480,7 +480,7 @@ subsystem mem_buf_vm
 #init.rc need set node group as system not audio, or engineer can not read it
 #/sys/class/qcom-haptics    lra_frequency_hz    0440    system    audio
 #/sys/class/qcom-haptics    lra_f0_cal_in_play  0440    system    audio
-#endif /* OPLUS_FEATURE_CHG_BASIC *
+#endif /* OPLUS_FEATURE_CHG_BASIC */
 
 # NPU device
 /dev/msm_npu             0644   system     system

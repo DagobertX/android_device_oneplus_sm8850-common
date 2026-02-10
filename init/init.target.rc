@@ -1,3 +1,4 @@
+
 # Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -33,6 +34,14 @@ import /vendor/etc/init/hw/init.qti.kernel.rc
 
 on early-init
     write /proc/sys/kernel/printk_devkmsg ratelimited
+    export MEMTAG_OPTIONS off
+
+on property:sys.oplus.bootupgrade=1
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq  1785600
+    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq  1785600
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq  1977600
+    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq  1977600
+    write /dev/kmsg "first boot, sys.oplus.bootupgrade = 1.  limit cpufreq."
 
 on init
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -40,6 +49,13 @@ on init
     chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     start logd
+
+on property:sys.boot_completed=1 && property:sys.oplus.bootupgrade=1
+    write /dev/kmsg "first boot completed, sys.oplus.bootupgrade = 1. free cpufreq limit."
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 3628800
+    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq 3628800
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq 4608000
+    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq 4608000
 
 on early-fs
     start vold
@@ -59,13 +75,22 @@ on late-fs
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
     # Enable WLAN cold boot calibration
-    write /sys/kernel/cnss/fs_ready 1
+    on property:ro.boot.product.vendor.sku=canoe
+        write /dev/kmsg "write /sys/kernel/cnss/fs_ready begin"
+        wait /sys/kernel/cnss/fs_ready
+        write /sys/kernel/cnss/fs_ready 1
+        write /dev/kmsg "write /sys/kernel/cnss/fs_ready end"
 
 on early-boot
     verity_update_state
 
 on boot
+#ifndef OPLUS_ARCH_EXTENDS
+    # dongchuancheng@MULTIMEDIA.AUDIOSERVER.FRAMEWORK, 2023/05/15, extend audio rt cpuset from cpu 1-2 to cpu0-7
     write /dev/cpuset/audio-app/cpus 0-1
+#else /* OPLUS_ARCH_EXTENDS */
+    write /dev/cpuset/audio-app/cpus 0-7
+#endif /* OPLUS_ARCH_EXTENDS */
     # Add a cpuset for the camera daemon
     # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
@@ -80,12 +105,20 @@ on boot
     chmod 0660 /sys/devices/platform/soc/990000.spi/spi_master/spi0/spi0.0/trusted_touch_enable
     chown system /sys/devices/system/cpu/hyp_core_ctl/enable
     chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
+    # Add a cpuset for kswapd-like thread
+    # We do not want kswapd-like thread running on super-big-core
+    mkdir /dev/cpuset/kswapd-like
+    write /dev/cpuset/kswapd-like/cpus 0-7
+    write /dev/cpuset/kswapd-like/mems 0
+    chown system system /dev/cpuset/kswapd-like
+    chown system system /dev/cpuset/kswapd-like/tasks
+    chmod 0660 /dev/cpuset/kswapd-like/tasks
 
-on property:vendor.display.lcd_density=560
-   setprop dalvik.vm.heapgrowthlimit 256m
+#on property:vendor.display.lcd_density=560
+#   setprop dalvik.vm.heapgrowthlimit 256m
 
-on property:vendor.display.lcd_density=640
-   setprop dalvik.vm.heapgrowthlimit 512m
+#on property:vendor.display.lcd_density=640
+#   setprop dalvik.vm.heapgrowthlimit 512m
 
 on init && property:ro.boot.mode=charger
 #ifdef OPLUS_FEATURE_CHG_BASIC
@@ -134,15 +167,34 @@ on property:sys.shutdown.requested=*
     write /sys/kernel/qcom_rproc/shutdown_in_progress 1
     stop vendor.per_proxy
 
-on property:vold.decrypt=trigger_restart_framework
-   start vendor.cnss_diag
+#ifdef OPLUS_MODEM_SUBSYSTEM_BOOT
+#wuxiaoyu@NETWORK.ARCH, 2021/11/24, Add for modem subsystem does not bootup during shutdown charging
+on property:ro.bootmode=charger
+    stop vendor.per_mgr
+    stop vendor.per_proxy
 
-service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
-   class main
-   user system
-   group system wifi inet sdcard_rw media_rw diag
-   oneshot
+#endif /* OPLUS_MODEM_SUBSYSTEM_BOOT */
+
+#ifndef OPLUS_FEATURE_WIFI_LOG
+#//liuhaifeng@CONNECTIVITY.HARDWARE.WIFI.LOG.9429328, 2025/06/25, modify for 8850, disable cnss_diag
+#on property:vold.decrypt=trigger_restart_framework
+#   start vendor.cnss_diag
+
+#service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
+#   class main
+#   user system
+#   group system wifi inet sdcard_rw media_rw diag
+#   oneshot
+#endif /* OPLUS_FEATURE_WIFI_LOG */
 
 on early-boot && property:persist.vendor.pcie.boot_option=*
     write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
     write /sys/bus/platform/devices/1c08000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
+
+#//2025/04/27 for hightempaging
+on property:ro.oplus.image.my_engineering.type=hightempaging && property:sys.boot_completed=1 && property:persist.sys.device_first_boot=0
+    write /sys/devices/system/cpu/cpu4/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq 1440000
+    write /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq 1382400
