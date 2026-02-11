@@ -1020,6 +1020,7 @@ vendor/etc/sensors/config/sns_tilt_to_wake.json
 vendor/etc/sensors/config/sns_transport_ppe.json
 vendor/etc/sensors/javalibs/odpmanagerlib-aar
 vendor/etc/sensors/sns_reg_config
+#odm/lib64/libqsh.utils.so
 
 # Synx
 vendor/lib64/libos.so
