@@ -26,8 +26,22 @@ PRODUCT_PACKAGES += \
     checkpoint_gc \
     otapreopt_script
 
+# Test
+PRODUCT_PACKAGES += \
+    libbcinfo.vendor \
+    libblas.vendor \
+    libdumpstateutil.vendor \
+    android.hardware.graphics.allocator-V1-ndk.vendor
+
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio.core-V3-ndk.vendor \
+    android.media.audio.common.types-V4-ndk.vendor \
+    android.hardware.audio.effect-V3-ndk.vendor \
+    android.hardware.audio.core.sounddose-V1-ndk.vendor \
+    android.hardware.audio.common-V1-ndk.vendor \
+    android.hardware.soundtrigger3-V1-ndk.vendor \
+    android.media.audio.common.types-V5-ndk.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
     audio.r_submix.default \
@@ -82,6 +96,9 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti.recovery
 
 # Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider-V3-ndk.vendor
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.concurrent.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.concurrent.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -163,10 +180,10 @@ PRODUCT_COPY_FILES += \
 
 # IPACM
 ifneq ($(TARGET_IS_TABLET),true)
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml \
-    IPACM_Filter_cfg.xml
+#PRODUCT_PACKAGES += \
+#    ipacm \
+#    IPACM_cfg.xml \
+#    IPACM_Filter_cfg.xml
 endif
 
 # IR Blaster
@@ -301,6 +318,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qspa_vendor.rc \
     vendor.qti.qspa-service
+
+# SecureElement
+ifneq ($(TARGET_IS_TABLET),true)
+PRODUCT_PACKAGES += \
+    SecureElementResTarget_Vendor
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/omapi/com.android.se.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.se.xml \
+    $(LOCAL_PATH)/configs/omapi/hal_uuid_map_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hal_uuid_map_23.xml \
+    $(LOCAL_PATH)/configs/omapi/hal_uuid_map_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hal_uuid_map_31.xml \
+    $(LOCAL_PATH)/configs/omapi/hal_uuid_map_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hal_uuid_map_config.xml
+endif
 
 # Recovery
 $(call soong_config_set_bool,recovery,target_recovery_uses_qti_drm,true)
@@ -437,7 +466,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix_aidl.xml
 DEVICE_MANIFEST_FILE := \
-    $(AUDIO_HAL_DIR)/configs/canoe/manifest_audio_qti_services.xml \
     $(LOCAL_PATH)/vintf/manifest_canoe.xml
 
 ifneq ($(TARGET_IS_TABLET),true)

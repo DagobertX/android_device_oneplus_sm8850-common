@@ -10,6 +10,7 @@ from extract_utils.fixups_blob import (
 )
 from extract_utils.fixups_lib import (
     lib_fixups,
+    lib_fixup_remove,
     lib_fixups_user_type,
 )
 from extract_utils.main import (
@@ -47,6 +48,15 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.qccsyshal_aidl-V1-ndk',
         'vendor.qti.qccvndhal_aidl-V1-ndk',
     ): lib_fixup_vendor_suffix,
+    (
+        'android.hardware.audio.core-V3-ndk',
+        'android.media.audio.common.types-V4-ndk',
+        'android.hardware.audio.effect-V3-ndk',
+        'android.hardware.audio.core.sounddose-V1-ndk',
+        'android.hardware.audio.common-V1-ndk',
+        'android.hardware.soundtrigger3-V1-ndk',
+        'android.media.audio.common.types-V5-ndk',
+    ): lib_fixup_remove,
 }
 
 blob_fixups: blob_fixups_user_type = {
@@ -56,23 +66,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(r'/\* (Huo\.Chen@SYSTEM\.RF, 2024/09/06, Add for ICC) \*/', r'# \1'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
-    (
-        'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
-        'vendor/lib64/hw/libaudiocorehal.qti.so',
-        'vendor/lib64/hw/libaudioeffecthal.qti.so',
-        'vendor/lib64/libaudioserviceexampleimpl.so',
-        'vendor/lib64/libqtigefar.so',
-        'vendor/lib64/soundfx/libqcompostprocbundle.so',
-        'vendor/lib64/soundfx/libqcomvisualizer.so',
-        'vendor/lib64/soundfx/libqcomvoiceprocessing.so',
-        'vendor/lib64/soundfx/libvolumelistener.so',
-    ): blob_fixup()
-        .replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),
-    'vendor/lib64/hw/libaudiocorehal.qti.so': blob_fixup()
-        .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V4-ndk.so')
-        .replace_needed('android.hardware.audio.core.sounddose-V1-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so'),
-    'vendor/lib64/hw/libsoundtriggerhal.qti.so': blob_fixup()
-        .replace_needed('android.media.audio.common.types-V2-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
 }  # fmt: skip

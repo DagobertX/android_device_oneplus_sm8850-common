@@ -20,6 +20,7 @@ vendor/etc/init/vendor.qti.audio-adsprpc-service.rc
 vendor/etc/init/vendor.qti.fastrpc.pd-default-config.rc
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
+vendor/lib64/libfastcrc.so
 vendor/lib64/libloadalgo_stub.so
 
 # ADSP modules
@@ -66,6 +67,7 @@ vendor/lib64/rfs/dsp/libvpp_gfrc_networks.so
 vendor/lib64/rfs/dsp/libvpp_svc_skel.so
 
 # Audio
+odm/lib64/libSchedAssistExtImpl_vendor.so
 vendor/bin/hw/audiohalservice.qti
 vendor/etc/init/audiohalservice_qti.rc
 vendor/etc/models/acd/conv_detection.eai
@@ -77,13 +79,15 @@ vendor/etc/models/mma/nvd_enpu_off.bin
 vendor/etc/models/mma/nvd_enpu_on.bin
 vendor/etc/models/mma/vad_enpu_off.bin
 vendor/etc/models/mma/vad_enpu_on.bin
+vendor/etc/vintf/manifest/Manifest_IAGM.xml
+vendor/etc/vintf/manifest/Manifest_IPAL.xml
 vendor/etc/vintf/manifest/audioeffectservice_qti.xml
 vendor/etc/vintf/manifest/manifest_audiocorehal_default.xml
 vendor/etc/vintf/manifest/soundtrigger.qti.xml
-vendor/lib64/hw/libaudiocorehal.default.so
-vendor/lib64/hw/libaudiocorehal.qti.so;DISABLE_DEPS
-vendor/lib64/hw/libaudioeffecthal.qti.so
-vendor/lib64/hw/libsoundtriggerhal.qti.so;DISABLE_DEPS
+vendor/lib64/hw/libaudiocorehal.default.so;DISABLE_CHECKELF
+vendor/lib64/hw/libaudiocorehal.qti.so;DISABLE_CHECKELF
+vendor/lib64/hw/libaudioeffecthal.qti.so;DISABLE_CHECKELF
+vendor/lib64/hw/libsoundtriggerhal.qti.so;DISABLE_CHECKELF
 vendor/lib64/customva_plugin.so
 vendor/lib64/hotword_plugin.so
 vendor/lib64/libAlacSwDec.so
@@ -109,8 +113,8 @@ vendor/lib64/libats.so
 vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libaudiochargerlistener.so
 vendor/lib64/libaudiofeaturestats.so
-vendor/lib64/libaudioplatformconverter.qti.so
-vendor/lib64/libaudioserviceexampleimpl.so
+vendor/lib64/libaudioplatformconverter.qti.so;DISABLE_CHECKELF
+vendor/lib64/libaudioserviceexampleimpl.so;DISABLE_CHECKELF
 vendor/lib64/libbatterylistener.so
 vendor/lib64/libcapiv2svacnnvendor.so
 vendor/lib64/libcapiv2svarnnvendor.so
@@ -151,7 +155,7 @@ vendor/lib64/libpalclient.so
 vendor/lib64/libpaleventnotifier.so
 vendor/lib64/libpalipcservice.so
 vendor/lib64/libqasr.so
-vendor/lib64/libqtigefar.so
+vendor/lib64/libqtigefar.so;DISABLE_CHECKELF
 vendor/lib64/libsession_agm.so
 vendor/lib64/libsession_ar.so
 vendor/lib64/libsession_compress.so
@@ -188,18 +192,20 @@ vendor/lib64/vendor.qti.hardware.qasr-V3-ndk.so
 
 # Audio configs
 vendor/etc/audio/sku_canoe/plugin_manager.xml
+vendor/etc/audio/sku_canoe/plugin_manager.xml:vendor/etc/audio/plugin_manager.xml
 vendor/etc/audio/sku_canoe/quasar_config.xml
+vendor/etc/audio/sku_canoe/quasar_config.xml:vendor/etc/audio/quasar_config.xml
 vendor/etc/HapticsPolicy.xml
 vendor/etc/Hapticsconfig.xml
 vendor/etc/card-defs.xml
 vendor/etc/usecaseKvManager.xml
 
 # Audio FX modules
-vendor/lib64/soundfx/libqcompostprocbundle.so
-vendor/lib64/soundfx/libqcomvisualizer.so
-vendor/lib64/soundfx/libqcomvoiceprocessing.so
-vendor/lib64/soundfx/libquasar.so
-vendor/lib64/soundfx/libvolumelistener.so
+vendor/lib64/soundfx/libqcompostprocbundle.so;DISABLE_CHECKELF
+vendor/lib64/soundfx/libqcomvisualizer.so;DISABLE_CHECKELF
+vendor/lib64/soundfx/libqcomvoiceprocessing.so;DISABLE_CHECKELF
+vendor/lib64/soundfx/libquasar.so;DISABLE_CHECKELF
+vendor/lib64/soundfx/libvolumelistener.so;DISABLE_CHECKELF
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@aidl-service-qti
@@ -225,7 +231,7 @@ vendor/etc/vintf/manifest/fm_hci.xml
 vendor/etc/vintf/manifest/manifest_btaudiocoreservices_qti.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.bluetooth.btavsprovider.xml
 vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so
-vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so
+vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so;DISABLE_CHECKELF
 vendor/lib64/hw/android.hardware.bluetooth.lmp_event-impl-qti.so
 vendor/lib64/hw/android.hardware.bluetooth.ranging@aidl-impl-qti.so
 vendor/lib64/hw/audio.bluetooth_qti.default.so
@@ -413,6 +419,7 @@ vendor/etc/init/hw/init.qti.kernel.rc
 vendor/etc/init/hw/init.qti.kernel.target.rc
 
 # Keymaster
+odm/lib64/libkeymint_provisioner_qti.so
 vendor/bin/hw/android.hardware.security.onekeymint-service-qti
 vendor/bin/hw/android.hardware.security.secretkeeper-service-qti
 vendor/bin/init.qti.keymaster.sh
@@ -426,6 +433,8 @@ vendor/etc/android.hardware.security.onekeymint-service-qti.rc
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
+vendor/lib64/libmodem_device_ids.so
+vendor/lib64/libmodem_device_ids_bindgen.dylib.so
 vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libspcom.so
 
@@ -437,6 +446,7 @@ vendor/etc/seccomp_policy/qsap_mpamsvc.policy
 # Media
 odm/etc/camera/media_profiles.xml
 odm/etc/media_profiles_V1_0.xml
+odm/lib64/libc2filterplugin.so
 odm/lib64/libdolbydecoderprocessor.so
 odm/lib64/libdolbyeglcore.so
 odm/lib64/libdolbyencoderprocessor.so
@@ -673,6 +683,11 @@ vendor/etc/vintf/manifest/vendor.qti.hardware.alarm.xml
 vendor/lib64/hw/vendor.qti.hardware.alarm-impl.so
 vendor/lib64/vendor.qti.hardware.alarm-V1-ndk.so
 
+# Powerstats
+vendor/bin/hw/android.hardware.powerstats-service.qti
+vendor/etc/init/android.hardware.powerstats-service.rc
+vendor/etc/vintf/manifest/android.hardware.powerstats-service.xml
+
 # QCC
 system_ext/app/QCC/QCC.apk
 system_ext/bin/qccsyshal@1.2-service
@@ -826,6 +841,15 @@ vendor/bin/ssr_diag
 vendor/bin/ssr_setup
 vendor/bin/subsystem_ramdump
 vendor/lib64/libsubsystem_control.so
+
+# Secureprocessor
+vendor/bin/hw/vendor.qti.hardware.secureprocessor
+vendor/etc/init/vendor.qti.hardware.secureprocessor.rc
+vendor/etc/vintf/manifest/vendor.qti.hardware.secureprocessor.xml
+vendor/lib64/vendor.qti.hardware.secureprocessor.common-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.secureprocessor.common-helper.so
+vendor/lib64/vendor.qti.hardware.secureprocessor.config-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.secureprocessor.device-V1-ndk.so
 
 # Sensors
 odm/bin/oplus_sensor_fb
@@ -1108,7 +1132,7 @@ vendor/lib64/libwfdhdcpcp.so
 vendor/lib64/libwfdhdcpservice_proprietary.so
 vendor/lib64/libwfdmminterface_proprietary.so
 vendor/lib64/libwfdmmservice_proprietary.so
-vendor/lib64/libwfdmmsrc_proprietary.so
+vendor/lib64/libwfdmmsrc_proprietary.so;DISABLE_CHECKELF
 vendor/lib64/libwfdmodulehdcpsession.so
 vendor/lib64/libwfdrtsp_vendor.so
 vendor/lib64/libwfdsessionmodule.so

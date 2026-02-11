@@ -83,6 +83,19 @@ odm/etc/vintf/manifest/android.hardware.contexthub-service.qmi.xml
 vendor/bin/hw/android.hardware.contexthub-service.qmi
 vendor/etc/chre/preloaded_nanoapps.json
 
+# Data (IPACM)
+vendor/bin/ipacm
+vendor/bin/ipacm-diag
+vendor/etc/init/ipacm-diag.rc
+vendor/etc/init/ipacm.rc
+vendor/etc/vintf/manifest/vendor.qti.hardware.tetheroffload.service.xml
+vendor/etc/IPACM_Filter_cfg.xml
+vendor/etc/IPACM_cfg.xml
+vendor/lib64/libipanat.so
+vendor/lib64/libnetfilter_conntrack.so
+vendor/lib64/libnfnetlink.so
+vendor/lib64/liboffloadhal.so
+
 # Data
 vendor/bin/adpl
 vendor/bin/embmsslServer
@@ -168,6 +181,7 @@ odm/lib64/librpmbengclient.so
 odm/lib64/libsecurity_event_dcs_vnd.so
 
 # GNSS
+odm/etc/init/lowi-server.rc
 odm/etc/apdr.conf
 odm/etc/izat.conf
 odm/etc/sap.conf
@@ -332,6 +346,7 @@ odm/etc/oem_asm2_tunner_platform_license.pfm
 odm/etc/oem_asm2_tunner_platform_trail_license.pfm
 odm/etc/oem_q_tunner_platform_license.pfm
 odm/etc/oem_q_tunner_platform_trail_license.pfm
+odm/etc/oem_stx_platform_license.pfm
 odm/etc/plugin_config.xml
 odm/lib64/lib-virtual-modem-protos.so
 odm/lib64/libcommcenterfw.so
@@ -339,8 +354,10 @@ odm/lib64/libcommcenterutils.so
 odm/lib64/libdmtp-protos-lite.so
 odm/lib64/libdmtp.so
 odm/lib64/libdmtpclient.so
+odm/lib64/libimsortcapis.so
 odm/lib64/libmindroid-app.so
 odm/lib64/libmindroid-framework.so
+odm/lib64/libortc_so.so
 odm/lib64/libqti-radio-service.so
 odm/lib64/libqti-subsys-service.so
 odm/lib64/libradio-service.so
@@ -522,6 +539,7 @@ vendor/etc/init/vendor.qti.rmt_storage.rc
 # Secure element
 odm/bin/hw/android.hardware.secure_element-service.qti
 odm/etc/init/android.hardware.secure_element-service.qti.rc
+odm/etc/vintf/manifest/secure_element-service.xml
 odm/etc/vintf/manifest/secure_element_omapi_service.xml
 odm/lib64/libsecurity_event_olc_vnd.so
 vendor/etc/vintf/manifest/android.hardware.secure_element.xml
