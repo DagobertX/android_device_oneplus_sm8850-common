@@ -1,6 +1,27 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
 ## are from OnePlus 15 (CPH2745_16.0.3.503(EX01)).
 
+# IDK
+vendor/lib64/libbase64.so
+vendor/lib64/libdrmMinimalfsHelper.so
+vendor/lib64/libdscaalgo.so
+vendor/lib64/libgptStaticHelper.so
+vendor/lib64/libiccprofile.so
+vendor/lib64/libmmfp.so
+vendor/lib64/libnative-api.so
+vendor/lib64/libplatformconfig.so
+vendor/lib64/libqtbase.so
+vendor/lib64/libqtiidentitycredential.so
+vendor/lib64/libqtjsonhelper.so
+vendor/lib64/libqtnodes.so
+vendor/lib64/libqttestclient.so
+vendor/lib64/libqttestservice.so
+vendor/lib64/libsbprovision.so
+vendor/lib64/libsoc_helper_jni.so
+vendor/lib64/libtzdrmgenprov.so
+vendor/etc/init/android.hardware.weaver-service-spu-qti.rc
+vendor/etc/permissions/android.hardware.context_hub.xml
+
 # ACDBs
 vendor/etc/acdbdata/haptics_data/tuning_data/haptics_rx_tuning_0_cdp.bin
 vendor/etc/acdbdata/haptics_data/tuning_data/haptics_rx_tuning_0_mtp.bin
@@ -545,6 +566,15 @@ odm/etc/init/init.oppo.reserve.rc
 
 # Native public libraries
 vendor/etc/public.libraries.txt
+
+# NFC
+vendor/etc/libnfc-hal-st-660_mtp.conf
+vendor/etc/libnfc-hal-st-660_qrd.conf
+vendor/etc/libnfc-hal-st-685_mtp.conf
+vendor/etc/libnfc-hal-st-685_qrd.conf
+vendor/etc/libnfc-hal-st-727_mtp.conf
+vendor/etc/libnfc-hal-st-727_qrd.conf
+vendor/etc/libnfc-hal-st.conf
 
 # OPLUS Log Core
 odm/bin/oldc_vnd
