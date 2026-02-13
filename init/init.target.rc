@@ -59,6 +59,14 @@ on late-fs
 
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
+    rm /metadata/boot_log_full.txt
+    rm /metadata/boot_log_crash.txt
+    rm /metadata/boot_log_kernel.txt
+    rm /metadata/boot_log_avc.txt
+    start boot_log
+    start boot_log_crash
+    start boot_log_kernel
+    start boot_log_avc
     # Enable WLAN cold boot calibration
     on property:ro.boot.product.vendor.sku=canoe
         write /dev/kmsg "write /sys/kernel/cnss/fs_ready begin"
@@ -147,6 +155,34 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    user system
    group system wifi inet sdcard_rw media_rw diag
    oneshot
+
+service boot_log /system/bin/logcat -b all -v time -f /metadata/boot_log_full.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_log_crash /system/bin/logcat -b crash -D -f /metadata/boot_log_crash.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_log_kernel /system/bin/logcat -b kernel -D -f /metadata/boot_log_kernel.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_log_avc /system/bin/logcat -e avc -f /metadata/boot_log_avc.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
 
 on early-boot && property:persist.vendor.pcie.boot_option=*
     write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}

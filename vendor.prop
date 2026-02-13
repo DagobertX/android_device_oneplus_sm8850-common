@@ -1,3 +1,6 @@
+ro.media.xml_variant.codecs=_canoe_v2
+ro.media.xml_variant.codecs_performance=_canoe_v2
+
 # Audio
 aaudio.hw_burst_min_usec=2000
 aaudio.mmap_exclusive_policy=2

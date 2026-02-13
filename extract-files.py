@@ -66,6 +66,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(r'/\* (Huo\.Chen@SYSTEM\.RF, 2024/09/06, Add for ICC) \*/', r'# \1'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
+    'vendor/etc/media_codecs_canoe_v2.xml': blob_fixup()
+        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
 }  # fmt: skip
