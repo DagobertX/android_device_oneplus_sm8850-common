@@ -69,6 +69,18 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('/my_product', '/product'),
     'vendor/etc/media_codecs_canoe_v2.xml': blob_fixup()
         .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
+    (
+        'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
+        'vendor/lib64/hw/libaudiocorehal.qti.so',
+        'vendor/lib64/hw/libaudioeffecthal.qti.so',
+        'vendor/lib64/libaudioserviceexampleimpl.so',
+        'vendor/lib64/libqtigefar.so',
+        'vendor/lib64/soundfx/libqcompostprocbundle.so',
+        'vendor/lib64/soundfx/libqcomvisualizer.so',
+        'vendor/lib64/soundfx/libqcomvoiceprocessing.so',
+        'vendor/lib64/soundfx/libvolumelistener.so',
+    ): blob_fixup()
+        .replace_needed('android.media.audio.common.types-V5-ndk.so', 'android.media.audio.common.types-V4-ndk.so'),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
 }  # fmt: skip

@@ -2,6 +2,10 @@
 ## are from OnePlus 15 (CPH2745_16.0.3.503(EX01)).
 
 # IDK
+odm/bin/oplus_sensor_ssr
+vendor/lib64/vendor.qti.qvirt-V2-ndk.so
+vendor/lib64/libVirtClientInterface.so
+vendor/lib64/libqsh_wwan_test.so
 vendor/bin/aecxsimulator
 vendor/bin/agmcap
 vendor/bin/agmcompresscap

@@ -1,7 +1,10 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
 ## are from OnePlus 15 (CPH2745_16.0.3.503(EX01)).
 
+
 # CNE
+vendor/bin/qtigetprop;DISABLE_CHECKELF
+vendor/bin/qtisetprop;DISABLE_CHECKELF
 vendor/app/CACertService/CACertService.apk
 vendor/app/CneApp/CneApp.apk;REQUIRED=CneApp.libvndfwk_detect_jni.qti_vendor_symlink
 vendor/app/IWlanService/IWlanService.apk

@@ -1,5 +1,7 @@
+vendor.sensors.dynamic_sensor_op_timeout_ms=1600
 ro.media.xml_variant.codecs=_canoe_v2
 ro.media.xml_variant.codecs_performance=_canoe_v2
+ro.boot.product.vendor.sku=canoe
 
 # Audio
 aaudio.hw_burst_min_usec=2000
