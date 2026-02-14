@@ -19,6 +19,13 @@ prebuilt_etc {
     vendor: true,
     vendor_ramdisk_available: true,
 }
+
+prebuilt_etc {
+    name: "init.bootlog.rc",
+    src: "init.bootlog.rc",
+    vendor: true,
+    sub_dir: "init/hw",
+}
  
 prebuilt_etc {
     name: "init.oplus.rc",

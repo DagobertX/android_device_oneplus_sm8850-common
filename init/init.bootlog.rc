@@ -1,0 +1,44 @@
+on post-fs-data
+    mkdir /metadata/bootlogs 0770 root system
+    rm /metadata/bootlogs/bootlog-full.txt
+    rm /metadata/bootlogs/bootlog-crash.txt
+    rm /metadata/bootlogs/bootlog-kernel.txt
+    rm /metadata/bootlogs/bootlog-avc.txt
+    start bootlog.main
+    start bootlog.crash
+    start bootlog.kernel
+    start bootlog.avc
+
+service bootlog.main /system/bin/logcat -b all -v time -f /metadata/bootlogs/bootlog-full.txt
+    class main
+    user root
+    group root system log
+    disabled
+    oneshot
+
+service bootlog.crash /system/bin/logcat -b crash -D -v time -f /metadata/bootlogs/bootlog-crash.txt
+    class main
+    user root
+    group root system log
+    disabled
+    oneshot
+
+service bootlog.kernel /system/bin/logcat -b kernel -D -v time -f /metadata/bootlogs/bootlog-kernel.txt
+    class main
+    user root
+    group root system log
+    disabled
+    oneshot
+
+service bootlog.avc /system/bin/logcat -b all -v time -e avc -f /metadata/bootlogs/bootlog-avc.txt
+    class main
+    user root
+    group root system log
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    stop bootlog.main
+    stop bootlog.crash
+    stop bootlog.kernel
+    stop bootlog.avc
