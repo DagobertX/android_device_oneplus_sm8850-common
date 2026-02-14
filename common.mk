@@ -181,10 +181,10 @@ PRODUCT_COPY_FILES += \
 
 # IPACM
 ifneq ($(TARGET_IS_TABLET),true)
-#PRODUCT_PACKAGES += \
-#    ipacm \
-#    IPACM_cfg.xml \
-#    IPACM_Filter_cfg.xml
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml \
+    IPACM_Filter_cfg.xml
 endif
 
 # IR Blaster
