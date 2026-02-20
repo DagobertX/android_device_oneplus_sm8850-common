@@ -17,10 +17,8 @@ vendor/bin/audioadsprpcd
 vendor/bin/loadalgo
 vendor/etc/init/vendor.qti.adsprpc-guestos-service.rc
 vendor/etc/init/vendor.qti.audio-adsprpc-service.rc
-vendor/etc/init/vendor.qti.fastrpc.pd-default-config.rc
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
-vendor/lib64/libfastcrc.so
 vendor/lib64/libloadalgo_stub.so
 
 # ADSP modules
@@ -254,6 +252,8 @@ vendor/bin/C2PAInternetService
 vendor/etc/init/c2painternetservice.rc
 vendor/etc/init/vendor.qti.hardware.c2pa-aidl-service-qti.rc
 vendor/etc/seccomp_policy/c2pa_network.policy
+vendor/etc/ssg/c2pa_enroll_config.json
+vendor/etc/ssg/c2pa_network_config.json
 vendor/etc/vintf/manifest/vendor.qti.hardware.c2pa-aidl-service.xml
 vendor/lib64/libAVFVirtClientInterface.so
 vendor/lib64/vendor.qti.hardware.c2pa-V1-ndk.so
@@ -284,15 +284,13 @@ vendor/bin/qwesd
 vendor/bin/ssgqmigd
 vendor/etc/init/qwesd.rc
 vendor/etc/seccomp_policy/qwesd@2.0.policy
-vendor/etc/ssg/c2pa_enroll_config.json
-vendor/etc/ssg/c2pa_network_config.json
 vendor/etc/ssg/ta_config.json
 vendor/etc/ssg/tz_whitelist.json
 vendor/lib64/libqwes.so
 vendor/lib64/libtaautoload.so
 
 # Diag
-system/lib64/vendor.qti.diaghal-V1-ndk.so
+system/lib64/vendor.qti.diaghal-V1-ndk.so:system_ext/lib64/vendor.qti.diaghal-V1-ndk.so
 system_ext/lib64/libdiag_system.so
 system_ext/lib64/libdiagatbparser_system.so
 system_ext/lib64/vendor.qti.diaghal@1.0.so
@@ -300,7 +298,6 @@ vendor/bin/diag-router
 vendor/etc/init/vendor.qti.diag.rc
 vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml
 vendor/lib64/libdiag.so
-vendor/lib64/libdiagjni.so
 vendor/lib64/vendor.qti.diaghal-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # DCF
@@ -316,9 +313,15 @@ vendor/etc/vintf/manifest/vendor.qti.hardware.dsp-service.xml
 vendor/lib64/vendor.qti.hardware.dsp-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
+# FASTCRC
+vendor/lib64/libfastcrc.so
+
 # FASTCV
 vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libfastcvopt.so
+
+# FASTRPC
+vendor/etc/init/vendor.qti.fastrpc.pd-default-config.rc
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper-rust-service-qti
@@ -419,7 +422,6 @@ vendor/etc/init/hw/init.qti.kernel.rc
 vendor/etc/init/hw/init.qti.kernel.target.rc
 
 # Keymaster
-odm/lib64/libkeymint_provisioner_qti.so
 vendor/bin/hw/android.hardware.security.onekeymint-service-qti
 vendor/bin/hw/android.hardware.security.secretkeeper-service-qti
 vendor/bin/init.qti.keymaster.sh
@@ -437,11 +439,6 @@ vendor/lib64/libmodem_device_ids.so
 vendor/lib64/libmodem_device_ids_bindgen.dylib.so
 vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libspcom.so
-
-# MPAM
-vendor/bin/qsap_mpamsvc
-vendor/etc/init/vendor.qsap.mpamsvc.rc
-vendor/etc/seccomp_policy/qsap_mpamsvc.policy
 
 # Media
 odm/etc/camera/media_profiles.xml
@@ -580,13 +577,7 @@ vendor/lib64/libperipheral_client.so
 # Performance
 vendor/bin/hw/vendor.qti.hardware.perf2-hal-service
 vendor/bin/poweropt-service
-vendor/bin/qlm-service
-vendor/bin/qsap_qapeservice
-vendor/bin/snapdragon_services
-vendor/etc/init/init.qlm-service.rc
 vendor/etc/init/poweropt-service.rc
-vendor/etc/init/snapdragon_services.rc
-vendor/etc/init/vendor.qsap.qapeservice.rc
 vendor/etc/init/vendor.qti.hardware.perf2-hal-service.rc
 vendor/etc/lm/prekill/prekill_2GB.data
 vendor/etc/lm/prekill/prekill_4GB.data
@@ -621,8 +612,6 @@ vendor/etc/pwr/OffScreenPowerOptFeature.xml
 vendor/etc/pwr/PSMPowerOptFeature.xml
 vendor/etc/pwr/PowerFeatureConfig.xml
 vendor/etc/pwr/VideoPowerOptFeature.xml
-vendor/etc/seccomp_policy/qsap_qapeservice.policy
-vendor/etc/vintf/manifest/snapdragon_services.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.perf2.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.power.powermodule.xml
 vendor/etc/smomo_setting.xml
@@ -663,14 +652,12 @@ vendor/lib64/libqti-utils.so
 vendor/lib64/libreffeature.so
 vendor/lib64/libskewknob.so
 vendor/lib64/libstandbyfeature.so
+vendor/lib64/libvideooptfeature.so
 vendor/lib64/vendor.qti.hardware.perf2-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.power.powermodule-V1-ndk.so
 vendor/lib64/vendor.qti.memory.pasrmanager-V1-ndk.so
 vendor/lib64/vendor.qti.memory.pasrmanager@1.0.so
 vendor/lib64/vendor.qti.memory.pasrmanager@1.1.so
-vendor/lib64/vendor.qti.snapdragonServices-V1-ndk.so
-vendor/lib64/vendor.qti.snapdragonServices-V2-ndk.so
-vendor/lib64/vendor.qti.snapdragonServices.qape-V1-ndk.so
 
 # PSI Client
 vendor/bin/hw/vendor.qti.psiclient@1.0-service
@@ -722,6 +709,16 @@ vendor/lib64/vendor.qti.qccvndhal_aidl-halimpl.so
 # QCV
 vendor/bin/init.qti.qcv.sh
 vendor/etc/init/init.qti.qcv.rc
+
+# QSAP service
+vendor/bin/qsap_qapeservice
+vendor/etc/init/vendor.qsap.qapeservice.rc
+vendor/etc/seccomp_policy/qsap_qapeservice.policy
+
+# QSAP mpam service
+vendor/bin/qsap_mpamsvc
+vendor/etc/init/vendor.qsap.mpamsvc.rc
+vendor/etc/seccomp_policy/qsap_mpamsvc.policy
 
 # QESDK
 vendor/etc/seccomp_policy/qesdksec.policy
@@ -838,6 +835,14 @@ vendor/lib64/libminkipcbinder_vendor.so
 vendor/lib64/libminksocket_vendor.so
 vendor/lib64/libqcbor.so
 vendor/lib64/vendor.qti.hardware.minkipcbinder-V1-ndk.so
+
+# Snapdragon services
+vendor/bin/snapdragon_services
+vendor/etc/init/snapdragon_services.rc
+vendor/etc/vintf/manifest/snapdragon_services.xml
+vendor/lib64/vendor.qti.snapdragonServices-V1-ndk.so
+vendor/lib64/vendor.qti.snapdragonServices-V2-ndk.so
+vendor/lib64/vendor.qti.snapdragonServices.qape-V1-ndk.so
 
 # SSR
 vendor/bin/ssr_diag
@@ -1048,7 +1053,6 @@ odm/etc/vintf/manifest/manifest_touch_aidl.xml
 # Video
 vendor/lib64/libstreamparser.so
 vendor/lib64/libstreamprocessor.so
-vendor/lib64/libvideooptfeature.so
 vendor/lib64/libvideotxr.so
 vendor/lib64/libvideoutils.so
 
@@ -1065,9 +1069,6 @@ vendor/lib64/vendor.qti.hardware.vpp-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 vendor/lib64/vendor.qti.hardware.vpp@1.3.so
-
-# UBWCP
-vendor/bin/ubwcconvert
 
 # Widevine DRM
 vendor/apex/com.google.android.widevine.nonupdatable.apex
