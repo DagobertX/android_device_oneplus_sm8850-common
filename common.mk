@@ -102,7 +102,7 @@ PRODUCT_COPY_FILES += \
 # Context Hub
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.context_hub.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/android.hardware.context_hub.xml
+    frameworks/native/data/etc/android.hardware.context_hub.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.context_hub.xml
 endif
 
 # Dalvik

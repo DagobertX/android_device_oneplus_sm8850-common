@@ -67,7 +67,6 @@ vendor/lib64/rfs/dsp/libvpp_gfrc_networks.so
 vendor/lib64/rfs/dsp/libvpp_svc_skel.so
 
 # Audio
-odm/lib64/libSchedAssistExtImpl_vendor.so
 vendor/bin/hw/audiohalservice.qti
 vendor/etc/init/audiohalservice_qti.rc
 vendor/etc/models/acd/conv_detection.eai
@@ -192,9 +191,7 @@ vendor/lib64/vendor.qti.hardware.qasr-V3-ndk.so
 
 # Audio configs
 vendor/etc/audio/sku_canoe/plugin_manager.xml
-vendor/etc/audio/sku_canoe/plugin_manager.xml:vendor/etc/audio/plugin_manager.xml
 vendor/etc/audio/sku_canoe/quasar_config.xml
-vendor/etc/audio/sku_canoe/quasar_config.xml:vendor/etc/audio/quasar_config.xml
 vendor/etc/HapticsPolicy.xml
 vendor/etc/Hapticsconfig.xml
 vendor/etc/card-defs.xml
@@ -390,6 +387,9 @@ my_product/framework/com.android.hotwordenrollment.common.util.jar:product/frame
 my_product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk:product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk
 my_product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk:product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk
 
+# Identity
+vendor/lib64/libqtiidentitycredential.so
+
 # Kernel
 vendor/bin/init.kernel.init_boot-memory.sh
 vendor/bin/init.kernel.post_boot-alor.sh
@@ -503,6 +503,7 @@ vendor/etc/media_profiles_canoe_v2.xml
 vendor/etc/mem_logger_config.xml
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libmmosal_vendor.so
+vendor/lib64/libplatformconfig.so
 vendor/lib64/libqc2audio_base.so
 vendor/lib64/libqc2audio_basecodec.so
 vendor/lib64/libqc2audio_core.so
@@ -792,6 +793,8 @@ vendor/lib64/qsn3all.bin
 
 # QTI service tracker
 vendor/bin/hw/vendor.qti.hardware.servicetrackeraidl-service
+vendor/bin/qt-service
+vendor/etc/init/init.qt-service.rc
 vendor/etc/init/vendor.qti.hardware.servicetrackeraidl-service.rc
 vendor/etc/vintf/manifest/vendor.qti.hardware.servicetrackeraidl-service.xml
 vendor/lib64/hw/vendor.qti.hardware.servicetrackeraidl-impl.so
@@ -1067,7 +1070,7 @@ vendor/lib64/vendor.qti.hardware.vpp@1.3.so
 vendor/bin/ubwcconvert
 
 # Widevine DRM
-#vendor/apex/com.google.android.widevine.nonupdatable.apex
+vendor/apex/com.google.android.widevine.nonupdatable.apex
 vendor/etc/vintf/manifest/android.hardware.drm-service.xml
 vendor/etc/oplus_Widevine_licenses.pfm
 
