@@ -78,3 +78,7 @@ on post-fs-data
 on property:ro.boot.prjname=*
     # Display
     setprop ro.separate.soft ${ro.boot.prjname}
+
+on property:ro.boot.serialno=*
+    # Radio
+    setprop ro.vendor.oplus.radio.serialno ${ro.boot.serialno}
