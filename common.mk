@@ -325,10 +325,6 @@ PRODUCT_PACKAGES += \
     qspa_vendor.rc \
     vendor.qti.qspa-service
 
-# QTI fwk-detect
-PRODUCT_PACKAGES += \
-    libvndfwk_detect_jni.qti_vendor # Needed by CNE app
-
 # SecureElement
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
