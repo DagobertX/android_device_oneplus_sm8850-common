@@ -30,6 +30,7 @@
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 
 import /vendor/etc/init/hw/init.qti.kernel.rc
+import /vendor/etc/init/hw/init.logcat.rc
 
 on early-init
     write /proc/sys/kernel/printk_devkmsg ratelimited

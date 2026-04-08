@@ -213,6 +213,7 @@ PRODUCT_PACKAGES += \
     init.qcom.recovery.rc \
     init.qcom.sh \
     init.target.rc \
+    init.logcat.rc \
     ueventd.oplus.rc \
     ueventd.qcom.rc
 
