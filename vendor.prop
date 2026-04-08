@@ -189,6 +189,9 @@ persist.vendor.dpm.vndr.feature=11
 
 # DRM
 drm.service.enabled=true
+persist.vendor.oplus.widevine.licenses=1
+vendor.wv.oemcrypto.debug.enable_hlos_data_path=true
+
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
