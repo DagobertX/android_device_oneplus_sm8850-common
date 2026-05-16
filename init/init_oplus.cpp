@@ -12,6 +12,10 @@
 #include <string>
 #include <unordered_map>
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
+using android::base::GetProperty;
 namespace android {
 namespace init {
 uint32_t InitPropertySet(const std::string& name, const std::string& value);
@@ -56,5 +60,61 @@ void vendor_process_bootenv() {
         LOG(ERROR) << "Unexpected region ID: " << region_id;
     } else {
         InitPropertySet("ro.boot.hardware.revision", it->second);
+    }
+}
+
+/*
+ * SetProperty does not allow updating read only properties and as a result
+ * does not work for our use case. Write "OverrideProperty" to do practically
+ * the same thing as "SetProperty" without this restriction.
+ */
+void OverrideProperty(const char* name, const char* value) {
+    size_t valuelen = strlen(value);
+
+    prop_info* pi = (prop_info*)__system_property_find(name);
+    if (pi != nullptr) {
+        __system_property_update(pi, value, valuelen);
+    } else {
+        __system_property_add(name, strlen(name), value, valuelen);
+    }
+}
+
+/*
+ * Only for read-only properties. Properties that can be wrote to more
+ * than once should be set in a typical init script (e.g. init.oplus.hw.rc)
+ * after the original property has been set.
+ */
+void vendor_load_properties() {
+    auto device = GetProperty("ro.product.product.device", "");
+    auto prjname = std::stoi(GetProperty("ro.boot.prjname", "0"));
+
+    switch (prjname) {
+        case 151: // CN
+            if (device == "OP60FFL1") {
+                OverrideProperty("ro.product.product.model", "PLK110");
+            }
+            break;
+        case 27: // IN
+            if (device == "OP611FL1") {
+                OverrideProperty("ro.product.product.model", "CPH2745");
+            }
+            break;
+        case 68: // EU
+            if (device == "OP611FL1") {
+                OverrideProperty("ro.product.product.model", "CPH2747");
+            }
+            break;
+        case 161: // NA
+            if (device == "OP611FL1") {
+                OverrideProperty("ro.product.product.model", "CPH2749");
+            }
+            break;
+        case 167: // ROW
+            if (device == "OP611FL1") {
+                OverrideProperty("ro.product.product.model", "CPH2747");
+            }
+            break;
+        default:
+            LOG(ERROR) << "Unexpected project name: " << prjname;
     }
 }
