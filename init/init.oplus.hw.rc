@@ -1,0 +1,21 @@
+#
+# Copyright (C) 2022-2023 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# infiniti
+on property:ro.boot.rf_version=151
+    setprop ro.boot.hardware.revision "CN"
+
+on property:ro.boot.rf_version=27
+    setprop ro.boot.hardware.revision "IN"
+
+on property:ro.boot.rf_version=68
+    setprop ro.boot.hardware.revision "EU"
+
+on property:ro.boot.rf_version=161
+    setprop ro.boot.hardware.revision "NA"
+    
+on property:ro.boot.rf_version=168
+    setprop ro.boot.hardware.revision "ROW"
