@@ -141,7 +141,11 @@ ro.camera.enableCamera1MaxZsl=1
 ro.camera.notify_nfc=1
 ro.camerax.extensions.enabled=true
 ro.hardware.camera=oemlayer.v2
+ro.oplus.camera.defercap.support=1
+ro.oplus.camera.defercap.all.quick.visible.support=1
 persist.vendor.camera.privapp.list=org.lineageos.aperture,com.oplus.camera,com.ss.android.ugc.aweme,org.codeaurora.snapcam
+vendor.camera.aux.packagelist=org.codeaurora.snapcam
+persist.sys.midasd.enable=1
 vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram,us.zoom.videomeetings
 
 # Chipset
