@@ -143,7 +143,10 @@ ro.camerax.extensions.enabled=true
 ro.hardware.camera=oemlayer.v2
 ro.oplus.camera.defercap.support=1
 ro.oplus.camera.defercap.all.quick.visible.support=1
-persist.vendor.camera.privapp.list=org.lineageos.aperture,com.oplus.camera,com.ss.android.ugc.aweme,org.codeaurora.snapcam
+# persist.vendor.camera.privapp.list is set to com.oplus.camera in vendor/oneplus/camera/opluscamera.mk
+# (product partition). The stale org.codeaurora.snapcam default here conflicted with it (same key, two
+# partitions) — removed so com.oplus.camera wins unambiguously (required: AOSP does an EXACT std::find
+# match for the privileged-client RAW-stream gate). See docs/AUDIT-201-init-sepolicy-hal.md.
 vendor.camera.aux.packagelist=org.codeaurora.snapcam
 persist.sys.midasd.enable=1
 vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram,us.zoom.videomeetings
