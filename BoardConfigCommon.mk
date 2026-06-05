@@ -88,6 +88,27 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := neutron
+TARGET_KERNEL_CROSS_COMPILE := \
+    CROSS_COMPILE=aarch64-linux-gnu-
+    
+TARGET_KERNEL_ADDITIONAL_FLAGS += \
+    LLVM=1 \
+    LLVM_IAS=1
+    
+TARGET_KERNEL_ADDITIONAL_FLAGS += \
+    CC=clang \
+    AR=llvm-ar \
+    NM=llvm-nm \
+    STRIP=llvm-strip \
+    OBJCOPY=llvm-objcopy \
+    OBJDUMP=llvm-objdump
+    
+TARGET_KERNEL_ADDITIONAL_FLAGS += \
+    KCFLAGS="-O3 -fno-addrsig -flto=thin" \
+    ELDFLAGS="-O3 --lto-O3"
+    
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8850
 ifneq ($(USE_PREBUILT_KERNEL), true)
 TARGET_KERNEL_ADDITIONAL_FLAGS := CONFIG_OPLUS_DEVICE_DTBS=y
