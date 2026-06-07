@@ -20,6 +20,12 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fstab.zram.50p",
+    src: "fstab.zram.50p",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "fstab.qcom",
     src: "fstab.qcom",
     vendor: true,

@@ -101,6 +101,8 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
+    swapon_all /vendor/etc/fstab.zram.50p
+
 on post-fs
 
 on early-boot
@@ -504,6 +506,11 @@ on property:persist.vendor.sys.rawdump_copy=0
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
+    on property:sys.boot_completed=1
+    # Set compression algorithm (e.g., lz4, zstd, lzo)
+    write /sys/block/zram0/comp_algorithm "lz4"
+    # Set the swappiness (default is usually 60, tune depending on your needs)
+    write /proc/sys/vm/swappiness 60
     #Enable UFS clock scaling back
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
     #Enable UFS auto_hibern8 back
