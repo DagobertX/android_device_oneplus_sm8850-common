@@ -571,6 +571,27 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/oplus
 
+# DIRTY FIX (2026-06-08): frameworks/opt/net/wifi/libwifi_hal references the
+# wlan vendor defaults module "libwifi-hal-qcom" (selected by BOARD_WLAN_DEVICE
+# := qcwcn) which lives in the hardware/qcom-caf/wlan soong_namespace. That
+# namespace was not imported, so soong reported "depends on undefined module
+# libwifi-hal-qcom". Import it so the defaults module is visible.
+# wpa_supplicant/hostapd additionally need lib_driver_cmd_qcwcn from the child
+# hardware/qcom-caf/wlan/qcwcn namespace.
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom-caf/wlan \
+    hardware/qcom-caf/wlan/qcwcn
+
+# DIRTY FIX (2026-06-08): the QTI boot-control + thermal AIDL HALs in
+# PRODUCT_PACKAGES (android.hardware.boot-service.qti{,.recovery},
+# android.hardware.thermal-service.qti) are defined in the hardware/qcom-caf/
+# {bootctrl,thermal} soong_namespaces, which were never imported -> kati reported
+# "includes non-existent modules in PRODUCT_PACKAGES". Import them so the modules
+# resolve. Same class of namespace-import build glue as the wlan fix above.
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom-caf/bootctrl \
+    hardware/qcom-caf/thermal
+
 # Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
