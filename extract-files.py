@@ -157,6 +157,11 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtensorflowlite_c.so', 'libtensorflowlite_c_vendor.so'),
     'vendor/usr/keylayout/gpio-keys.kl': blob_fixup()
         .add_line_if_missing('key 735   ASSIST'),
+    # libapsfixup.so is a /odm lib that odm/lib64/libAlgoProcess.so now DT_NEEDEDs (see
+    # device/oneplus/infiniti/extract-files.py). The camera app classloader namespace can't
+    # resolve /odm libs by name, so expose it as a vendor public library too.
+    'vendor/etc/public.libraries.txt': blob_fixup()
+        .add_line_if_missing('libapsfixup.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
