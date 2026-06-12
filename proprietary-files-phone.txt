@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 15 (CPH2745_16.0.7.201(EX01)).
+## are from OnePlus 15R (CPH2767_16.0.7.200(EX01)).
 
 # CNE
 vendor/app/CACertService/CACertService.apk
@@ -338,7 +338,6 @@ odm/bin/hw/subsys_daemon
 odm/bin/commcenterd
 odm/bin/init.subsys.sh
 odm/etc/init/commcenterd.rc
-odm/etc/init/init.modem.rc
 odm/etc/init/init.network.rc
 odm/etc/init/mdm_feature.rc
 odm/etc/init/subsys_daemon.rc

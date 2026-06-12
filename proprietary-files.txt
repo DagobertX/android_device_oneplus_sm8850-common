@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 15 (CPH2745_16.0.7.201(EX01)).
+## are from OnePlus 15R (CPH2767_16.0.7.200(EX01)).
 
 # ACDBs
 vendor/etc/acdbdata/haptics_data/tuning_data/haptics_rx_tuning_0_cdp.bin
@@ -9,6 +9,7 @@ vendor/etc/acdbdata/haptics_data/tuning_data/haptics_vi_tuning_0_cdp.bin
 vendor/etc/acdbdata/haptics_data/tuning_data/haptics_vi_tuning_0_mtp.bin
 vendor/etc/acdbdata/haptics_data/tuning_data/haptics_vi_tuning_0_qrd.bin
 vendor/etc/acdbdata/nn_vad_models/fai__3.0.0_0.0__eai_5.6.0_enpuv6.pmd
+vendor/etc/acdbdata/wnr_models/wind_filter__1.0__48k__2ch__16b__eai_5.5.eai
 
 # ADSP
 vendor/bin/adsprpcd
@@ -43,9 +44,12 @@ vendor/etc/models/mma/nvd_enpu_on.bin
 vendor/etc/models/mma/vad_enpu_off.bin
 vendor/etc/models/mma/vad_enpu_on.bin
 vendor/etc/vintf/manifest/Manifest_IAGM.xml
+vendor/etc/vintf/manifest/Manifest_IListenSoundModel.xml
 vendor/etc/vintf/manifest/Manifest_IPAL.xml
+vendor/etc/vintf/manifest/Manifest_IPALEventNotifier.xml
 vendor/etc/vintf/manifest/audioeffectservice_qti.xml
 vendor/etc/vintf/manifest/manifest_audiocorehal_default.xml
+vendor/etc/vintf/manifest/qasr_vintf.xml
 vendor/etc/vintf/manifest/soundtrigger.qti.xml
 vendor/lib64/hw/libaudiocorehal.default.so
 vendor/lib64/hw/libaudiocorehal.qti.so;DISABLE_DEPS
@@ -143,7 +147,7 @@ vendor/lib64/libstream_sensorpcmdata.so
 vendor/lib64/libstream_sensorrenderer.so
 vendor/lib64/libstream_soundtrigger.so
 vendor/lib64/libstream_ultrasound.so
-vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c_vendor.so;FIX_SONAME
+vendor/lib64/libtensorflowlite_c_qcom.so
 vendor/lib64/libvui_utils.so
 vendor/lib64/sva_plugin.so
 vendor/lib64/vendor.qti.hardware.ListenSoundModelAidl-V1-ndk.so
@@ -197,14 +201,13 @@ vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so
 vendor/lib64/hw/android.hardware.bluetooth.lmp_event-impl-qti.so
 vendor/lib64/hw/android.hardware.bluetooth.ranging@aidl-impl-qti.so
 vendor/lib64/hw/audio.bluetooth_qti.default.so
-vendor/lib64/hw/libbcs.so
 vendor/lib64/hw/mbedtls_qti.so
+vendor/lib64/hw/qc_bcs_lib.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth.btavsprovider-impl-qti.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth.finder-impl-qti.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@aidl-impl.so
 vendor/lib64/hw/vendor.qti.hardware.fm-impl.so
 vendor/lib64/btaudio_offload_if.so
-vendor/lib64/libVoiceSdk.so
 vendor/lib64/libbluetooth_audio_session_aidl_qti.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
@@ -274,9 +277,11 @@ vendor/lib64/vendor.qti.diaghal-V1-ndk.so;MODULE_SUFFIX=_vendor
 odm/etc/init/hw/init.oplus.display.rc
 vendor/bin/feature_enabler_client
 vendor/etc/init/feature_enabler_client.rc
+vendor/etc/058eb5c6-666d-4d06-b996-522410412877_2026-01-12_platform_RSA_license_75992976805022424249809535731023317112.pfm
 vendor/etc/2025-05-09_platform_RSA_SM8850-KAANAPALI_license_44de0851-4860-4b27-93ce-888ddb6d846a.pfm
 vendor/etc/2025-08-19_platform_RSA_SM8850-KAANAPALI_license_041c7d27-2a09-4856-a151-bc97c58a32f7.pfm
 vendor/etc/2025-08-19_platform_RSA_SM8850-KAANAPALI_license_c5211d39-e3d3-46c8-9dd0-3775810af82f.pfm
+vendor/etc/2025-09-23_platform_RSA_SM8845_license_5114256b-d4ce-4cf4-8c4b-40f4c70ce6a5.pfm
 
 # Display (HDR)
 vendor/lib64/libhdr_tm.so
@@ -361,6 +366,7 @@ vendor/etc/display/DPU12__.xml
 vendor/etc/display/DPU1310.xml
 vendor/etc/display/DPU13__.xml
 vendor/etc/display/DPU880.xml
+vendor/etc/display/DPU970.xml
 vendor/etc/display/DPU980.xml
 vendor/etc/display/DPU9__.xml
 vendor/etc/display/advanced_sf_offsets.xml
@@ -405,6 +411,7 @@ vendor/lib64/libtinyxml2_1.so
 vendor/lib64/libvmfilexfer.so
 
 # Display firmware
+vendor/firmware/dcp.bin
 vendor/firmware/dpAP_full.mbn
 vendor/firmware/dpAP_mini.mbn
 
@@ -536,11 +543,9 @@ odm/etc/media_profiles_V1_0.xml
 odm/lib64/libc2filterplugin.so
 odm/lib64/libdolbydecoderprocessor.so
 odm/lib64/libdolbyeglcore.so
-odm/lib64/libdolbyencoderprocessor.so
 odm/lib64/libdolbyottcameracontrol.so
 odm/lib64/libdolbyproxyandroid.so
 odm/lib64/libqcodec2_dolbydecoderfilter.so
-odm/lib64/libqcodec2_dolbyencoderfilter.so
 system_ext/lib64/libmmosal.so
 system_ext/lib64/libmmparser_lite.so
 vendor/bin/hw/qconfigservice
@@ -556,6 +561,7 @@ vendor/etc/media_canoe_sku2/video_system_specs.json
 vendor/etc/media_canoe_sku3/video_system_specs.json
 vendor/etc/media_canoe_v1/video_system_specs.json
 vendor/etc/media_canoe_v2/video_system_specs.json
+vendor/etc/media_canoe_v3/video_system_specs.json
 vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
 vendor/etc/vintf/manifest/c2_manifest_vendor.xml
@@ -571,6 +577,8 @@ vendor/etc/media_codecs_canoe_v1.xml
 vendor/etc/media_codecs_canoe_v1_vendor.xml
 vendor/etc/media_codecs_canoe_v2.xml
 vendor/etc/media_codecs_canoe_v2_vendor.xml
+vendor/etc/media_codecs_canoe_v3.xml
+vendor/etc/media_codecs_canoe_v3_vendor.xml
 vendor/etc/media_codecs_performance_canoe_sku1.xml
 vendor/etc/media_codecs_performance_canoe_sku1_vendor.xml
 vendor/etc/media_codecs_performance_canoe_sku2.xml
@@ -581,12 +589,15 @@ vendor/etc/media_codecs_performance_canoe_v1.xml
 vendor/etc/media_codecs_performance_canoe_v1_vendor.xml
 vendor/etc/media_codecs_performance_canoe_v2.xml
 vendor/etc/media_codecs_performance_canoe_v2_vendor.xml
+vendor/etc/media_codecs_performance_canoe_v3.xml
+vendor/etc/media_codecs_performance_canoe_v3_vendor.xml
 vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_canoe_sku1.xml
 vendor/etc/media_profiles_canoe_sku2.xml
 vendor/etc/media_profiles_canoe_sku3.xml
 vendor/etc/media_profiles_canoe_v1.xml
 vendor/etc/media_profiles_canoe_v2.xml
+vendor/etc/media_profiles_canoe_v3.xml
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libmmosal_vendor.so
 vendor/lib64/libplatformconfig.so
@@ -654,12 +665,11 @@ odm/etc/vintf/manifest/manifest_oplus_cwb_aidl.xml
 odm/etc/vintf/manifest/manifest_oplus_displaypanelfeature_aidl.xml
 odm/etc/vintf/manifest/vintf_manifext_aidl_panelchaplin.xml
 odm/lib64/libPanelChaplin.so
-odm/lib64/libdisplayadfr2minfps_qcom.so
 odm/lib64/libdisplayaidlapis.so
 odm/lib64/libdisplayfossfeature_nature.so
 odm/lib64/libdpaservice.so
 odm/lib64/libstc_color_feature.so
-odm/lib64/vendor.oplus.hardware.cwb-V2-ndk.so
+odm/lib64/vendor.oplus.hardware.cwb-V1-ndk.so
 odm/lib64/vendor.oplus.hardware.display.MixLut3D-V1-ndk.so
 odm/lib64/vendor.oplus.hardware.displaycolorfeature-V1-ndk.so
 vendor/lib64/libPanelChaplin.so;MODULE_SUFFIX=_vendor
@@ -667,6 +677,7 @@ vendor/lib64/libcwb_client_vendor.so
 vendor/lib64/libcwb_qcom_aidl.so
 vendor/lib64/libdtlm.so
 vendor/lib64/vendor.oplus.hardware.cwb-V2-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.oplus.hardware.cwb-V2-ndk.so:odm/lib64/vendor.oplus.hardware.cwb-V2-ndk.so
 vendor/lib64/vendor.oplus.hardware.cwb@1.0.so
 vendor/lib64/vendor.oplus.hardware.displaycolorfeature-V1-ndk.so;MODULE_SUFFIX=_vendor
 
@@ -681,6 +692,10 @@ odm/lib64/libosensenativeproxy_client.so
 vendor/lib64/libosensenativeproxy_client.so;MODULE_SUFFIX=_vendor
 
 # Pasrmanager
+vendor/bin/hw/vendor.qti.memory.pasrmanager-service
+vendor/etc/init/vendor.qti.memory.pasrmanager-service.rc
+vendor/etc/vintf/manifest/vendor.qti.memory.pasrmanager-service.xml
+vendor/lib64/hw/vendor.qti.memory.pasrmanager-impl.so
 vendor/lib64/libpasrutils.so
 vendor/lib64/vendor.qti.memory.pasrmanager-V1-ndk.so
 vendor/lib64/vendor.qti.memory.pasrmanager@1.0.so
@@ -699,6 +714,7 @@ vendor/etc/init/vendor.qti.hardware.perf2-hal-service.rc
 vendor/etc/lm/prekill/prekill_2GB.data
 vendor/etc/lm/prekill/prekill_4GB.data
 vendor/etc/lm/prekill/prekill_6GB.data
+vendor/etc/lm/PinnerFeature.xml
 vendor/etc/lm/PreKillFeature.xml
 vendor/etc/lm/PrefAppsFeature.xml
 vendor/etc/lm/ProCompFeature.xml
@@ -713,6 +729,7 @@ vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/perfconfigstore.xml
 vendor/etc/perf/perfconfigstore.xml
+vendor/etc/perf/pinnerconfigstore.xml
 vendor/etc/perf/qapeboostsconfig.xml
 vendor/etc/perf/qapeconfigstore.xml
 vendor/etc/perf/qapegameconfig.txt
@@ -720,6 +737,7 @@ vendor/etc/perf/targetconfig.xml
 vendor/etc/perf/targetresourceconfigs.xml
 vendor/etc/perf/targetsysnodesconfigs.xml
 vendor/etc/perf/testcommonresourceconfigs.xml
+vendor/etc/perf/testtargetresourceconfigs.xml
 vendor/etc/pwr/CameraPowerOptFeature.xml
 vendor/etc/pwr/GamePowerOptFeature.xml
 vendor/etc/pwr/OffScreenPowerOptFeature.xml
@@ -741,6 +759,7 @@ vendor/lib64/libperf-thermalprovider.so
 vendor/lib64/libperfconfig.so
 vendor/lib64/libperfdb.so
 vendor/lib64/libperfioctl.so
+vendor/lib64/libpinner.so
 vendor/lib64/libpowercallback.so
 vendor/lib64/libpowercore.so
 vendor/lib64/libprefapps.so
@@ -748,6 +767,7 @@ vendor/lib64/libprekill.so
 vendor/lib64/libprocomp.so
 vendor/lib64/libpsmoptfeature.so
 vendor/lib64/libq-perflog.so
+vendor/lib64/libqape_oem_ext.so
 vendor/lib64/libqti-appclassifier.so
 vendor/lib64/libqti-engine-loader.so
 vendor/lib64/libqti-jankrescue.so
@@ -934,6 +954,7 @@ vendor/lib64/hw/vendor.qti.hardware.servicetrackeraidl-impl.so
 
 # QVIRT
 vendor/lib64/libVirtClientInterface.so
+vendor/lib64/libidv.so
 vendor/lib64/vendor.qti.qvirt-V2-ndk.so
 
 # SCVE
@@ -1057,38 +1078,38 @@ vendor/etc/sensors/config/molokai_dae.json
 vendor/etc/sensors/config/molokai_default_sensors.json
 vendor/etc/sensors/config/molokai_dynamic_sensors.json
 vendor/etc/sensors/config/molokai_fcal_mmc56x3x_0.json
-vendor/etc/sensors/config/molokai_hdk_lsm6dsv_0.json
-vendor/etc/sensors/config/molokai_hdk_lsm6dsv_1.json
 vendor/etc/sensors/config/molokai_irq.json
 vendor/etc/sensors/config/molokai_lps22df_0.json
-vendor/etc/sensors/config/molokai_lsm6dsv_0.json
-vendor/etc/sensors/config/molokai_lsm6dsv_1.json
 vendor/etc/sensors/config/molokai_mmc56x3x_0.json
-vendor/etc/sensors/config/molokai_mtp_lsm6dsv_0.json
-vendor/etc/sensors/config/molokai_mtp_lsm6dsv_1.json
 vendor/etc/sensors/config/molokai_power_0.json
 vendor/etc/sensors/config/molokai_qrd_default_sensors.json
-vendor/etc/sensors/config/molokai_qrd_lsm6dsv_0.json
 vendor/etc/sensors/config/molokai_qrd_mmc56x3x_0.json
 vendor/etc/sensors/config/molokai_qrd_tmd3765_0.json
 vendor/etc/sensors/config/molokai_sht4x_0.json
 vendor/etc/sensors/config/molokai_sx932x_0.json
 vendor/etc/sensors/config/molokai_tmd3765_0.json
-vendor/etc/sensors/config/molokai_vertigo_lsm6dsv_0.json
-vendor/etc/sensors/config/molokai_vertigo_lsm6dsv_1.json
 vendor/etc/sensors/config/molokai_vertigo_mmc56x3x_0.json
 vendor/etc/sensors/config/oplus_camera_aon.json
 vendor/etc/sensors/config/qsh_ble.json
 vendor/etc/sensors/config/qsh_camera_common.json
 vendor/etc/sensors/config/qsh_camera_common_sm8845.json
+vendor/etc/sensors/config/qsh_camera_fairladyExfront_3.json
+vendor/etc/sensors/config/qsh_camera_fairladyfront_3.json
 vendor/etc/sensors/config/qsh_camera_imx688_6.json
 vendor/etc/sensors/config/qsh_camera_imx688_6_actuator.json
 vendor/etc/sensors/config/qsh_camera_infinitifront_4.json
 vendor/etc/sensors/config/qsh_camera_lafafront_4.json
+vendor/etc/sensors/config/qsh_camera_lighthousefront_1.json
+vendor/etc/sensors/config/qsh_camera_macanExFront_4.json
+vendor/etc/sensors/config/qsh_camera_macanFront_4.json
 vendor/etc/sensors/config/qsh_camera_ov32c4c_4.json
 vendor/etc/sensors/config/qsh_camera_ov32c4c_4_sm8845.json
 vendor/etc/sensors/config/qsh_camera_s5kjn5_3.json
 vendor/etc/sensors/config/qsh_camera_s5kjn5_3_actuator.json
+vendor/etc/sensors/config/qsh_camera_swangoosefrontmain_3.json
+vendor/etc/sensors/config/qsh_camera_swangoosefrontsub_4.json
+vendor/etc/sensors/config/qsh_camera_u9bfront_4.json
+vendor/etc/sensors/config/qsh_camera_u9front_4.json
 vendor/etc/sensors/config/sns_amd.json
 vendor/etc/sensors/config/sns_aont.json
 vendor/etc/sensors/config/sns_cm.json
@@ -1110,7 +1131,6 @@ vendor/etc/sensors/config/sns_smd.json
 vendor/etc/sensors/config/sns_tilt.json
 vendor/etc/sensors/config/sns_tilt_to_wake.json
 vendor/etc/sensors/config/sns_transport_ppe.json
-vendor/etc/sensors/javalibs/odpmanagerlib-aar
 vendor/etc/sensors/sns_reg_config
 
 # SMC Invoke
@@ -1129,7 +1149,6 @@ vendor/lib64/vendor.qti.hardware.minkipcbinder-V1-ndk.so
 vendor/bin/snapdragon_services
 vendor/etc/init/snapdragon_services.rc
 vendor/etc/vintf/manifest/snapdragon_services.xml
-vendor/lib64/vendor.qti.snapdragonServices-V1-ndk.so
 vendor/lib64/vendor.qti.snapdragonServices-V2-ndk.so
 vendor/lib64/vendor.qti.snapdragonServices.qape-V1-ndk.so
 
@@ -1160,6 +1179,7 @@ vendor/etc/init/vendor.qti.tftp.rc
 vendor/bin/thermal-engine-v2
 vendor/etc/init/init_thermal-engine-v2.rc
 vendor/etc/thermal-engine.conf
+vendor/lib64/libqpt.so
 vendor/lib64/libthermalclient.so
 
 # Time services
